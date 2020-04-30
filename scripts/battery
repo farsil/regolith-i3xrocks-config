@@ -50,15 +50,16 @@ if [ -z "$CHARGE_STATE" ]; then
     exit 0
 elif [ "$CHARGE_STATE" == "discharging" ]; then
     CHARGE_ICON=$(xrescat i3xrocks.label.dn D)
+    CHARGE_SPAN="<span color=\"${LABEL_COLOR}\">$CHARGE_ICON</span>"
 elif [ "$CHARGE_STATE" == "charging" ]; then
     CHARGE_ICON=$(xrescat i3xrocks.label.up C)
+    CHARGE_SPAN="<span color=\"${LABEL_COLOR}\">$CHARGE_ICON</span>"
 else
-    CHARGE_ICON=$(echo -e '\u2003')
+    CHARGE_SPAN=""
 fi
 
 ICON_SPAN="<span color=\"${LABEL_COLOR}\">$LABEL_ICON</span>"
 VALUE_SPAN="<span font_desc=\"${VALUE_FONT}\" color=\"${VALUE_COLOR}\"> $BATT_PERCENT%</span>"
-CHARGE_SPAN="<span color=\"${LABEL_COLOR}\">$CHARGE_ICON</span>"
 
 echo "${ICON_SPAN}${VALUE_SPAN}${CHARGE_SPAN}"
 
